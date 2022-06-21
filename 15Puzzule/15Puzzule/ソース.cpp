@@ -2,6 +2,25 @@
 #include<stdlib.h>
 #include<conio.h>
 #include<time.h>
+#include <windows.h>
+#define _CRT_SECURE_NO_WARNINGS
+
+BOOL changeConsoleSize(int x, int y) {
+	HANDLE hStdout;
+	COORD coord;
+	coord.X = x;
+	coord.Y = y;
+
+	SMALL_RECT rectConsoleSize;
+
+	hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	//ウィンドウサイズを目的の大きさに設定にする
+	rectConsoleSize.Right = x - 1;
+	rectConsoleSize.Bottom = y - 1;
+	SetConsoleWindowInfo(hStdout, TRUE, &rectConsoleSize);
+	return TRUE;
+}
 
 //ボードのマス数
 #define BOARD_WIDTH		(4)
@@ -41,6 +60,8 @@ void moveToBlank(VEC2 _movePos) {
 }
 
 int main(void) {
+	//コンソールサイズ変更値
+	changeConsoleSize(30, 20);
 	//今の時刻でシャッフル
 	srand((unsigned int)time(NULL));
 
@@ -63,6 +84,7 @@ int main(void) {
 
 	while (true) {
 		system("cls");
+		printf("  15Puzzle\n\n");//タイトル
 		printf("+--+--+--+--+\n");
 		for (int y = 0; y < BOARD_HEIGHT; y++) {
 			for (int x = 0; x < BOARD_WIDTH; x++)
@@ -73,7 +95,11 @@ int main(void) {
 			printf("|\n");
 			printf("+--+--+--+--+\n");
 		}
-
+		printf("\n\n  操作方法\n");//操作説明
+		printf("W:空白の下の数と入れ替える\n");
+		printf("A:空白の右の数と入れ替える\n");
+		printf("S:空白の上の数と入れ替える\n");
+		printf("D:空白の左の数と入れ替える\n");
 		//パズルが元の状態に戻ると表示違うと非表示
 		bool isClear = true;
 		for (int y = 0; y < BOARD_HEIGHT; y++)
