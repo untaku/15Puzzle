@@ -1,0 +1,6 @@
+﻿  ソース.cpp
+C:\Users\student\Desktop\15Puzzule\15Puzzule\ソース.cpp(11,13): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+C:\Users\student\Desktop\15Puzzule\15Puzzule\ソース.cpp(47,16): error C2556: 'int main(void)': オーバーロード関数は、'int main(void)' と戻り値の型のみが異なります。
+C:\Users\student\Desktop\15Puzzule\15Puzzule\ソース.cpp(11): message : 'main' の宣言を確認してください
+C:\Users\student\Desktop\15Puzzule\15Puzzule\ソース.cpp(47,5): error C2084: 関数 'int main(void)' は既に本体を持っています。
+C:\Users\student\Desktop\15Puzzule\15Puzzule\ソース.cpp(11): message : 'main' の以前の定義を確認してください
